@@ -20,17 +20,20 @@ public class Main {
             Connection connection = DriverManager.getConnection(url, user, pass);
             System.out.println("Connection established success with Database!");
             Statement statement = connection.createStatement();
-            String query = "select * from student";
-            ResultSet resultSet = statement.executeQuery(query);
+            String query = "INSERT INTO student(ROOL_NO, STUDENT_NAME, student_address) VALUES (2, 'Rakib', 'Tongi')";
+            int resultSet = statement.executeUpdate(query);
 
-            while (resultSet.next()){
+            if (resultSet>0){
+                System.out.println("New data inserted successfully!");
+                System.out.println("Total Rows affected : " + resultSet);
+            }
+           /* while (resultSet.next()){
                 int id = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String address = resultSet.getString(3);
                 System.out.println("The " + id + " id's Student name is " + name + " and his/her address is " + address);
-            }
+            }*/
             statement.close();
-            resultSet.close();
         }catch (SQLException s){
             System.err.println("Database Connection Failed - " + s.getMessage());
         }
