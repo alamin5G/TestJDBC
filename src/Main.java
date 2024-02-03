@@ -20,11 +20,11 @@ public class Main {
             Connection connection = DriverManager.getConnection(url, user, pass);
             System.out.println("Connection established success with Database!");
             Statement statement = connection.createStatement();
-            String query = "INSERT INTO student(ROOL_NO, STUDENT_NAME, student_address) VALUES (2, 'Rakib', 'Tongi')";
+            String query = "DELETE from student where ROOL_NO = 1";
             int resultSet = statement.executeUpdate(query);
 
             if (resultSet>0){
-                System.out.println("New data inserted successfully!");
+                System.out.println("Data deleted successfully!");
                 System.out.println("Total Rows affected : " + resultSet);
             }
            /* while (resultSet.next()){
